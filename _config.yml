@@ -4,7 +4,11 @@ title: 🍒 大模型我都爱
 description: >
   A curated collection of Chinese online content designed for Large Language Model
   training, evaluation, and research. Exploring high-quality Chinese language resources
-  for multilingual AI development. 
+  for multilingual AI development.
+
+# GitHub Pages settings
+baseurl: "/chinese-online-content-for-llm"
+url: "https://bearbearyu1223.github.io"
 
 # Build settings
 
