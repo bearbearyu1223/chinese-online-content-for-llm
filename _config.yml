@@ -22,6 +22,8 @@ exclude:
   - prepare-for-pdf.py
   - pdf-no-breaks.css
   - "*.DS_Store"
+  - PDF_QUICK_REFERENCE.md
+  - POST_MANAGEMENT.md
 
 # Theme-specific settings
 
