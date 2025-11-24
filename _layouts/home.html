@@ -24,6 +24,10 @@ layout: base
     <ul class="post-list">
       {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
       {%- for post in posts -%}
+        {%- comment -%} Extract filename from post path {%- endcomment -%}
+        {%- assign post_filename = post.path | split: "/" | last -%}
+        {%- comment -%} Check if post is in the published list {%- endcomment -%}
+        {%- if site.data.published_posts.posts contains post_filename -%}
       <li>
         <span class="post-meta">{{ post.date | date: date_format }}</span>
         <h3>
@@ -35,6 +39,7 @@ layout: base
           {{ post.excerpt }}
         {%- endif -%}
       </li>
+        {%- endif -%}
       {%- endfor -%}
     </ul>
 

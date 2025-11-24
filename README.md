@@ -1,4 +1,4 @@
-# Chinese Online Content for LLM 🇨🇳
+# 🍒 大模型我都爱
 
 This repository contains curated Chinese online content designed for Large Language Model (LLM) training and evaluation. The content is organized as a Jekyll-based website for easy browsing and access.
 

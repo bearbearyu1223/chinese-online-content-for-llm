@@ -1,0 +1,12 @@
+# List of post filenames (without path) that should be published on the website
+# To publish a new post, simply add its filename to this list
+# To hide a post, remove its filename from this list
+
+posts:
+  - 2025-07-20-cs336-note-get-started.md
+  - 2025-07-22-cs336-note-simple-bpe.md
+
+# Future posts can be added here:
+# - 2025-07-26-cs336-note-train-bpe-tinystories.md
+# - 2025-08-10-cs336-gpt2-regex-for-pretokenization-explaind.md
+# - etc.

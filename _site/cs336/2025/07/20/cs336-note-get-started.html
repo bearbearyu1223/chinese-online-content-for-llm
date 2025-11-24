@@ -4,23 +4,23 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Study Notes: Stanford CS336 Language Modeling from Scratch [1] | 🍒 Han’s Generative AI Quest</title>
+<title>Study Notes: Stanford CS336 Language Modeling from Scratch [1] | 🍒 大模型我都爱</title>
 <meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="Study Notes: Stanford CS336 Language Modeling from Scratch [1]" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Introduction" />
-<meta property="og:description" content="Introduction" />
+<meta name="description" content="A curated collection of Chinese online content designed for Large Language Model training, evaluation, and research. Exploring high-quality Chinese language resources for multilingual AI development." />
+<meta property="og:description" content="A curated collection of Chinese online content designed for Large Language Model training, evaluation, and research. Exploring high-quality Chinese language resources for multilingual AI development." />
 <link rel="canonical" href="http://localhost:4000/cs336/2025/07/20/cs336-note-get-started.html" />
 <meta property="og:url" content="http://localhost:4000/cs336/2025/07/20/cs336-note-get-started.html" />
-<meta property="og:site_name" content="🍒 Han’s Generative AI Quest" />
+<meta property="og:site_name" content="🍒 大模型我都爱" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2025-07-20T00:00:00-07:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Study Notes: Stanford CS336 Language Modeling from Scratch [1]" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-07-20T00:00:00-07:00","datePublished":"2025-07-20T00:00:00-07:00","description":"Introduction","headline":"Study Notes: Stanford CS336 Language Modeling from Scratch [1]","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/cs336/2025/07/20/cs336-note-get-started.html"},"url":"http://localhost:4000/cs336/2025/07/20/cs336-note-get-started.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-07-20T00:00:00-07:00","datePublished":"2025-07-20T00:00:00-07:00","description":"A curated collection of Chinese online content designed for Large Language Model training, evaluation, and research. Exploring high-quality Chinese language resources for multilingual AI development.","headline":"Study Notes: Stanford CS336 Language Modeling from Scratch [1]","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/cs336/2025/07/20/cs336-note-get-started.html"},"url":"http://localhost:4000/cs336/2025/07/20/cs336-note-get-started.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="🍒 Han&apos;s Generative AI Quest" />
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="🍒 大模型我都爱" />
 
 <!-- MathJax Configuration -->
 <script>
@@ -43,18 +43,7 @@
 </head>
 <body><header class="site-header">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/">🍒 Han&#39;s Generative AI Quest</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-        <label for="nav-trigger">
-          <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
-            </svg>
-          </span>
-        </label>
-
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
-      </nav></div>
+  <div class="wrapper"><a class="site-title" rel="author" href="/">🍒 大模型我都爱</a></div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -66,33 +55,77 @@
         Jul 20, 2025
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="p-author h-card" itemprop="name">Han Yu</span></span></p>
+            <span class="p-author h-card" itemprop="name">大模型我都爱</span></span></p>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <h2 id="introduction">Introduction</h2>
+    <style>
+  .xiaohongshu-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #ff2442; /* 小红书主色 */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .xiaohongshu-link:hover {
+    text-decoration: underline;
+  }
+  .xiaohongshu-logo {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+  }
+</style>
 
-<p>It’s been a while since my last blog post about my generative AI learning journey (January 1, 2024). My day job has demanded significant time and energy, but I don’t want that to derail my passion and curiosity for deep-diving into this field.</p>
+<div style="padding:12px;border:1px solid #eee;border-radius:8px;display:inline-block;margin-bottom:20px;">
+  <strong>大模型我都爱</strong><br />
+  <p style="margin:4px 0;">
+    小红书号：
+    <a class="xiaohongshu-link" href="https://www.xiaohongshu.com/user/profile/5b2c5758e8ac2b08bf20e38d" target="_blank">
+      <img class="xiaohongshu-logo" src="https://static.cdnlogo.com/logos/r/77/rednote-xiaohongshu.svg" alt="小红书 logo" />
+      119826921
+    </a>
+  </p>
+  IP属地：美国
+</div>
 
-<p>This week, I had a realization: instead of endlessly reflecting, thinking, or planning, it’s time to act. Even with just one hour of focused study after work each day, I can make meaningful progress by year-end.</p>
-
-<p>I’ve decided to tackle Stanford’s <a href="https://stanford-cs336.github.io/spring2025/"><strong>CS336: Language Modeling from Scratch</strong></a> at my own pace. I’m grateful that Stanford makes their <a href="https://www.youtube.com/watch?v=SQ3fZ1sAqXI&amp;list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&amp;ab_channel=StanfordOnline"><strong>Lecture Videos</strong></a>, <a href="https://github.com/stanford-cs336"><strong>Lecture Notes &amp; Assignments</strong></a> freely available online—a perfect fit for someone like me who can’t commit to fixed class schedules but still craves structured learning.</p>
-
-<p>To give back to the community, I’ll document and share my learning notes as I progress. I’m curious to see how much I can accomplish by dedicating just an hour a day (or ~10 hours per week) through the end of the year. Can I complete all the lectures and assignments? I know I’ll move slowly, but I’m excited to test my consistency and see what’s possible.</p>
+<h2 id="introduction">Introduction</h2>
 
 <p>This first post covers <strong>setting up the local development environment</strong>—a small but necessary step to begin engaging with the lecture materials.</p>
 
+<p>这第一篇文章涵盖了<strong>本地开发环境的设置</strong>——这是开始学习课程材料的一个小但必要的步骤。</p>
+
 <h2 id="setting-up-the-local-dev-environment">Setting Up the Local Dev Environment</h2>
+
+<h2 id="设置本地开发环境">设置本地开发环境</h2>
+
+<hr />
 
 <h3 id="prerequisites">Prerequisites</h3>
 
 <p>Make sure you have Git, Python 3.11, and Node.js installed on your system. You’ll also need <a href="https://github.com/astral-sh/uv"><code class="language-plaintext highlighter-rouge">uv</code></a>, a fast Python package manager.</p>
+
+<h3 id="前提条件">前提条件</h3>
+
+<p>确保你的系统上已安装Git、Python 3.11和Node.js。你还需要<a href="https://github.com/astral-sh/uv"><code class="language-plaintext highlighter-rouge">uv</code></a>，一个快速的Python包管理器。</p>
+
+<hr />
 
 <h3 id="step-1-clone-the-cs336-repository">Step 1: Clone the CS336 Repository</h3>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/stanford-cs336/spring2025-lectures
 <span class="nb">cd </span>spring2025-lectures
 </code></pre></div></div>
+
+<h3 id="步骤1clone-the-cs336-repository">步骤1：Clone the CS336 Repository</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/stanford-cs336/spring2025-lectures
+<span class="nb">cd </span>spring2025-lectures
+</code></pre></div></div>
+
+<hr />
 
 <h3 id="step-2-set-up-python-virtual-environment-with-uv">Step 2: Set Up Python Virtual Environment with UV</h3>
 
@@ -112,16 +145,49 @@
 <span class="nb">source</span> .venv/bin/activate
 </code></pre></div></div>
 
+<h3 id="步骤2使用uv设置python虚拟环境">步骤2：使用UV设置Python虚拟环境</h3>
+
+<p>安装<code class="language-plaintext highlighter-rouge">uv</code>（如果尚未安装）：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-LsSf</span> https://astral.sh/uv/install.sh | sh
+</code></pre></div></div>
+
+<p>使用Python 3.11创建虚拟环境：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv venv <span class="nt">--python</span><span class="o">=</span>3.11
+</code></pre></div></div>
+
+<p>激活环境：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># macOS/Linux</span>
+<span class="nb">source</span> .venv/bin/activate
+</code></pre></div></div>
+
+<hr />
+
 <h3 id="step-3-install-python-dependencies">Step 3: Install Python Dependencies</h3>
 
 <blockquote>
-  <p>💡 Note: I’m using a MacBook Pro (M4). The <code class="language-plaintext highlighter-rouge">triton</code> package doesn’t support Apple Silicon, so I excluded it during the initial setup.<br />
+  <p>💡 Note: I’m using a MacBook Pro (M4). The <code class="language-plaintext highlighter-rouge">triton</code> package doesn’t support Apple Silicon, so I excluded it during the initial setup.
 More info: <a href="https://github.com/triton-lang/triton">Triton GitHub</a></p>
 </blockquote>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="nt">-v</span> <span class="s2">"triton"</span> requirements.txt <span class="o">&gt;</span> requirements_no_triton.txt
 uv pip <span class="nb">install</span> <span class="nt">-r</span> requirements_no_triton.txt
 </code></pre></div></div>
+
+<h3 id="步骤3安装python相关库">步骤3：安装Python相关库</h3>
+
+<blockquote>
+  <p>💡 注意：我使用的是MacBook Pro (M4)。<code class="language-plaintext highlighter-rouge">triton</code>包不支持Apple Silicon，所以我在初始设置时将其排除。
+更多信息：<a href="https://github.com/triton-lang/triton">Triton GitHub</a></p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="nt">-v</span> <span class="s2">"triton"</span> requirements.txt <span class="o">&gt;</span> requirements_no_triton.txt
+uv pip <span class="nb">install</span> <span class="nt">-r</span> requirements_no_triton.txt
+</code></pre></div></div>
+
+<hr />
 
 <h3 id="step-4-generate-executable-lecture-content">Step 4: Generate Executable Lecture Content</h3>
 
@@ -134,6 +200,20 @@ uv pip <span class="nb">install</span> <span class="nt">-r</span> requirements_n
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var/traces/lecture_01.json
 </code></pre></div></div>
+
+<h3 id="步骤4生成可执行的课程内容">步骤4：生成可执行的课程内容</h3>
+
+<p>编译课程：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python execute.py <span class="nt">-m</span> lecture_01
+</code></pre></div></div>
+
+<p>这将在本地以下位置生成一个追踪文件：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var/traces/lecture_01.json
+</code></pre></div></div>
+
+<hr />
 
 <h3 id="step-5-build-the-local-react-web-app-to-view-lectures">Step 5: Build the Local React Web App to View Lectures</h3>
 
@@ -156,7 +236,32 @@ npm <span class="nb">install
 
 <p>It should be something like <img src="/assets/picture/2025_07_20_cs336_note_get_started/cs336_lecture_view.png" alt="this" />.</p>
 
+<h3 id="步骤5构建本地react-web应用以查看课程">步骤5：构建本地React Web应用以查看课程</h3>
+
+<p>如果需要，安装Node.js：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>node
+</code></pre></div></div>
+
+<p>然后构建并运行追踪查看器：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>trace-viewer
+npm <span class="nb">install
+</span>npm run dev
+</code></pre></div></div>
+
+<p>在浏览器中打开查看器：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:&lt;PORT&gt;?trace=var/traces/lecture_01.json
+</code></pre></div></div>
+
+<p>本地服务端应该看起来像<img src="/assets/picture/2025_07_20_cs336_note_get_started/cs336_lecture_view.png" alt="这样" />。</p>
+
+<hr />
+
 <p>Then enjoy going through the lecture notes!</p>
+
+<p>然后享受学习课程笔记的过程吧！</p>
 
   </div><a class="u-url" href="/cs336/2025/07/20/cs336-note-get-started.html" hidden></a>
 </article>
@@ -178,7 +283,7 @@ npm <span class="nb">install
         </p>
       </div>
       <div class="footer-col">
-        <p>I chronicle my captivating journey through Generative AI, sharing insights,  breakthroughs, and learnings from my enthralling side projects in the field. 
+        <p>A curated collection of Chinese online content designed for Large Language Model training, evaluation, and research. Exploring high-quality Chinese language resources for multilingual AI development. 
 </p>
       </div>
     </div>

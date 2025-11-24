@@ -2,11 +2,55 @@
 layout: post
 title: "Study Notes: Stanford CS336 Language Modeling from Scratch [2]"
 categories: cs336
-author: 
-- Han Yu
+author:
+- 大模型我都爱
 ---
+
+<style>
+  .xiaohongshu-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #ff2442; /* 小红书主色 */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .xiaohongshu-link:hover {
+    text-decoration: underline;
+  }
+  .xiaohongshu-logo {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+  }
+</style>
+
+<div style="padding:12px;border:1px solid #eee;border-radius:8px;display:inline-block;margin-bottom:20px;">
+  <strong>大模型我都爱</strong><br>
+  <p style="margin:4px 0;">
+    小红书号：
+    <a class="xiaohongshu-link"
+       href="https://www.xiaohongshu.com/user/profile/5b2c5758e8ac2b08bf20e38d"
+       target="_blank">
+      <img class="xiaohongshu-logo"
+           src="https://static.cdnlogo.com/logos/r/77/rednote-xiaohongshu.svg"
+           alt="小红书 logo">
+      119826921
+    </a>
+  </p>
+  IP属地：美国
+</div>
+
 # Byte Pair Encoding (BPE) Tokenizer in a Nutshell
+
+# 字节对编码（BPE）分词器简述
+
+---
+
 ## Key Terms
+
+## 关键术语
 
 | Concept | Description |
 |:--------|:------------|
@@ -15,9 +59,26 @@ author:
 | Byte | 8 bits; one byte can hold values from 0 to 255 |
 | Tokenization | Breaking text corpus input into manageable pieces (tokens) for a model |
 
+| 概念 | 描述 |
+|:--------|:------------|
+| Unicode | 为每个字符分配唯一代码点的系统（例如，'A' → 65） |
+| UTF-8 | 将这些代码点编码为1-4字节的方法 |
+| 字节 | 8位；一个字节可以保存0到255的值 |
+| 分词 | 将文本语料库输入分解为模型可管理的片段（标记） |
+
+---
+
 Let us take the following string as a simple example to illustrate the concept.
 
+让我们以下面的字符串作为一个简单的例子来说明这个概念。
+
+---
+
 ## Example: Encoding 'A😊'
+
+## 示例：编码'A😊'
+
+---
 
 ### Step 1: Get the Unicode Codepoints
 
@@ -31,6 +92,21 @@ Output:
 ```
 [65, 128522]
 ```
+
+### 步骤1：获取Unicode代码
+
+```python
+text = 'A😊'
+codepoints = [ord('A'), ord('😊')]
+print(codepoints)  # [65, 128522]
+```
+
+输出：
+```
+[65, 128522]
+```
+
+---
 
 ### Step 2: UTF-8 Encoding (Turn Codepoints into Bytes)
 
@@ -49,17 +125,52 @@ Here's what happened:
 - '😊' is encoded using four bytes: [240, 159, 152, 138]
 - 'A😊' is encoded as the sequence [65, 240, 159, 152, 138]
 
+### 步骤2：UTF-8编码（将代码转换为字节）
+
+```python
+utf8_bytes = text.encode("utf-8")
+print(tuple(utf8_bytes))  # (65, 240, 159, 152, 138)
+```
+
+输出：
+```
+(65, 240, 159, 152, 138)
+```
+
+发生了什么：
+- 'A' 使用一个字节编码：65
+- '😊' 使用四个字节编码：[240, 159, 152, 138]
+- 'A😊' 被编码为序列 [65, 240, 159, 152, 138]
+
+---
+
 ## Why Using UTF-8 for Encoding is Helpful
 
 Instead of dealing with hundreds of thousands of possible codepoints (Unicode has more than 150,000 codepoints) or millions of words/subwords in vocabulary, we can model text using sequences of bytes. Each byte can be represented by an integer from 0 to 255, so we only need a vocabulary of size 256 to model input text. This approach is simple and complete—any character in any language can be represented as bytes, eliminating out-of-vocabulary token concerns.
 
+## 为什么使用UTF-8编码很有帮助
+
+我们可以使用字节序列来建模文本，而不是处理数十万个可能的代码点（Unicode有超过150,000个代码点）或词汇表中的数百万个单词/子词。每个字节可以用0到255之间的整数表示，因此我们只需要大小为256的词汇表来建模输入文本。这种方法简单且完整——任何语言中的任何字符都可以表示为字节，消除了词汇表外标记的问题。
+
+---
+
 ## Tokenization Spectrum
+
+## 分词范围
 
 | Tokenization Level | Example Tokens | Pros | Cons |
 |:-------------------|:---------------|:-----|:-----|
 | **Word-level** | `["unbelievable"]` | Human-readable, efficient | OOV (out-of-vocabulary) issues |
 | **Subword-level** (BPE) | `["un", "believ", "able"]` | Handles rare words, compact | Requires training |
 | **Byte-level** | `[117, 110, 98, 101, ...]` (bytes) | No OOV, simple | Longer sequences, less semantic meaning |
+
+| 分词级别 | 示例标记 | 优点 | 缺点 |
+|:-------------------|:---------------|:-----|:-----|
+| **词级** | `["unbelievable"]` | 人类可读，高效 | OOV（词汇表外）问题 |
+| **子词级** (BPE) | `["un", "believ", "able"]` | 处理罕见词，紧凑 | 需要训练 |
+| **字节级** | `[117, 110, 98, 101, ...]` (字节) | 无OOV，简单 | 序列更长，语义意义较少 |
+
+---
 
 ## Why Subword Tokenization is the Middle Ground
 
@@ -72,26 +183,65 @@ Instead of dealing with hundreds of thousands of possible codepoints (Unicode ha
   2. Retains compactness for common words
   3. Is learnable from corpus statistics
 
+## 为什么子词分词是中间地带
+
+使用**字节对编码（BPE）**的**子词分词**在其他方法之间提供了平衡：
+
+- **词级分词**在处理罕见或未见过的词时遇到困难（例如，即使"believe"是已知的，"unbelievable"可能是未知的）
+- **字节级分词**避免了未知标记问题，但创建了冗长、低效的序列
+- **子词分词**（BPE）：
+  1. 将罕见词分解为熟悉的片段（子词）
+  2. 保持常见词的紧凑性
+  3. 可以从语料库统计中学习
+
+---
+
 ## Byte Pair Encoding (BPE) Algorithm Overview
 
-BPE starts from characters and iteratively **merges the most frequent adjacent pairs** into longer tokens. 
+BPE starts from characters and iteratively **merges the most frequent adjacent pairs** into longer tokens.
+
+## 字节对编码（BPE）算法概述
+
+BPE从字符开始，迭代地**将最频繁的相邻对合并**为更长的标记。
+
+---
 
 ### Example Training Corpus
 
 Consider this toy training corpus:
 
 ```
-"low"     (5 times)  
-"lowest"  (2 times)  
-"newest"  (6 times)  
+"low"     (5 times)
+"lowest"  (2 times)
+"newest"  (6 times)
 "wider"   (3 times)
 ```
 
 We want to learn a compact subword vocabulary that reuses frequent patterns like "low" and "est".
 
+### 示例训练语料库
+
+考虑这个玩具训练语料库：
+
+```
+"low"     (5次)
+"lowest"  (2次)
+"newest"  (6次)
+"wider"   (3次)
+```
+
+我们想要学习一个紧凑的子词词汇表，重用像"low"和"est"这样的频繁模式。
+
+---
+
 ### Step-by-Step BPE Process
 
+### 逐步BPE过程
+
+---
+
 #### Step 0: Preprocess as Characters
+
 Each word is broken into characters with an end-of-word marker `</w>`:
 
 ```
@@ -101,7 +251,21 @@ Each word is broken into characters with an end-of-word marker `</w>`:
 "w i d e r </w>"    (3)
 ```
 
+#### 步骤0：预处理为字符
+
+每个单词被分解为字符，带有词尾标记`</w>`：
+
+```
+"l o w </w>"        (5)
+"l o w e s t </w>"  (2)
+"n e w e s t </w>"  (6)
+"w i d e r </w>"    (3)
+```
+
+---
+
 #### Step 1: Count Adjacent Pairs
+
 Compute most frequent adjacent pairs across all words:
 
 ```
@@ -111,7 +275,21 @@ Compute most frequent adjacent pairs across all words:
 ('o', 'w') appears 7 times
 ```
 
+#### 步骤1：计数相邻对
+
+计算所有单词中最频繁的相邻对：
+
+```
+('e', 's') 出现8次
+('s', 't') 出现8次
+('l', 'o') 出现7次
+('o', 'w') 出现7次
+```
+
+---
+
 #### Step 2: Merge 'e' + 's' → 'es'
+
 Update vocabulary:
 
 ```
@@ -120,6 +298,19 @@ Update vocabulary:
 "n e w es t </w>"     (6)
 "w i d e r </w>"      (3)
 ```
+
+#### 步骤2：合并 'e' + 's' → 'es'
+
+更新词汇表：
+
+```
+"l o w </w>"          (5)
+"l o w es t </w>"     (2)
+"n e w es t </w>"     (6)
+"w i d e r </w>"      (3)
+```
+
+---
 
 #### Step 3: Merge 'es' + 't' → 'est'
 
@@ -130,6 +321,17 @@ Update vocabulary:
 "w i d e r </w>"     (3)
 ```
 
+#### 步骤3：合并 'es' + 't' → 'est'
+
+```
+"l o w </w>"         (5)
+"l o w est </w>"     (2)
+"n e w est </w>"     (6)
+"w i d e r </w>"     (3)
+```
+
+---
+
 #### Step 4: Merge 'l' + 'o' → 'lo', then 'lo' + 'w' → 'low'
 
 ```
@@ -139,8 +341,26 @@ Update vocabulary:
 "w i d e r </w>"    (3)
 ```
 
+#### 步骤4：合并 'l' + 'o' → 'lo'，然后 'lo' + 'w' → 'low'
+
+```
+"low </w>"          (5)
+"low est </w>"      (2)
+"n e w est </w>"    (6)
+"w i d e r </w>"    (3)
+```
+
+---
+
 #### Continue merging...
+
 Eventually we learn useful building blocks like 'low', 'est', and 'new'. After training, "newest" would tokenize to `['new', 'est', '</w>']`.
+
+#### 继续合并...
+
+最终我们学习到有用的构建块，如'low'、'est'和'new'。训练后，"newest"将被分词为`['new', 'est', '</w>']`。
+
+---
 
 ## BPE Implementation
 
@@ -150,6 +370,16 @@ Below is a complete implementation demonstrating the BPE algorithm on the corpus
 "low low low low low lower lower widest widest widest newest newest newest newest newest newest"
 ```
 
+## BPE实现
+
+下面是一个完整的实现，演示了在语料库上的BPE算法：
+
+```
+"low low low low low lower lower widest widest widest newest newest newest newest newest newest"
+```
+
+---
+
 ### Key Components
 
 1. **Initialization**: Creates vocabulary with `<|endoftext|>` special token and all 256 byte values
@@ -158,12 +388,31 @@ Below is a complete implementation demonstrating the BPE algorithm on the corpus
 4. **Merging**: Merges the most frequent pair (lexicographically largest in case of ties)
 5. **Tokenization**: Uses learned merges to tokenize new words
 
+### 关键组件
+
+1. **初始化**：创建包含`<|endoftext|>`特殊标记和所有256个字节值的词汇表
+2. **预分词**：在空格处分割文本并将单词转换为字节元组
+3. **对频率计数**：计算语料库中所有相邻字节对
+4. **合并**：合并最频繁的对（在平局的情况下选择字典序最大的）
+5. **分词**：使用学习到的合并来分词新单词
+
+---
+
 ### How It Works
 
 1. **Pre-tokenization**: Converts `"low low low..."` into `{(l,o,w): 5, (l,o,w,e,r): 2, ...}`
 2. **Merge Selection**: Finds most frequent pairs like `('s','t')` and `('e','s')`, chooses lexicographically larger `('s','t')`
 3. **Iterative Merging**: Continues merging until desired number of merges is reached
 4. **Tokenization**: Applies learned merges in order to tokenize new words
+
+### 工作原理
+
+1. **预分词**：将`"low low low..."`转换为`{(l,o,w): 5, (l,o,w,e,r): 2, ...}`
+2. **合并选择**：找到最频繁的对，如`('s','t')`和`('e','s')`，选择字典序较大的`('s','t')`
+3. **迭代合并**：继续合并，直到达到所需的合并次数
+4. **分词**：按顺序应用学习到的合并来分词新单词
+
+---
 
 ### Expected Output
 
@@ -172,7 +421,19 @@ With 6 merges, the algorithm produces:
 - **Final vocabulary**: `<|endoftext|>`, 256 byte chars, `st`, `est`, `ow`, `low`, `west`, `ne`
 - **"newest" tokenizes as**: `['ne', 'west']`
 
-Below is one implementation for Algorithm 1 of [Sennrich et al. [2016]](https://arxiv.org/abs/1508.07909). 
+### 预期输出
+
+通过6次合并，算法产生：
+- **合并**：`['s t', 'e st', 'o w', 'l ow', 'w est', 'n e']`
+- **最终词汇表**：`<|endoftext|>`、256个字节字符、`st`、`est`、`ow`、`low`、`west`、`ne`
+- **"newest"被分词为**：`['ne', 'west']`
+
+---
+
+Below is one implementation for Algorithm 1 of [Sennrich et al. [2016]](https://arxiv.org/abs/1508.07909).
+
+下面是[Sennrich等人[2016]](https://arxiv.org/abs/1508.07909)的算法1的一个实现。
+
 ```python
 from collections import defaultdict, Counter
 from typing import Dict, List, Tuple, Set, Union
@@ -413,57 +674,63 @@ if __name__ == "__main__":
             print(f"Token ID {token_id}: '{description}'")
 ```
 
+---
+
 ## Sample Output
 
 When you run this code, you'll see output like:
+
+## 示例输出
+
+当你运行这段代码时，你会看到类似的输出：
 
 ```
     BPE Training on Corpus:
     Corpus: low low low low low lower lower widest widest widest newest newest newest newest newest newest
     ==================================================
     Initial word frequencies: {'(l,o,w)': 5, '(l,o,w,e,r)': 2, '(w,i,d,e,s,t)': 3, '(n,e,w,e,s,t)': 6}
-    
+
     Merge 1:
     Pair frequencies: {'lo': 7, 'ow': 7, 'we': 8, 'er': 2, 'wi': 3, 'id': 3, 'de': 3, 'es': 9, 'st': 9, 'ne': 6, 'ew': 6}
     Most frequent pair: (s, t) (freq: 9)
     After merge: {'(l,o,w)': 5, '(l,o,w,e,r)': 2, '(w,i,d,e,s t)': 3, '(n,e,w,e,s t)': 6}
-    
+
     Merge 2:
     Pair frequencies: {'lo': 7, 'ow': 7, 'we': 8, 'er': 2, 'wi': 3, 'id': 3, 'de': 3, 'es t': 9, 'ne': 6, 'ew': 6}
     Most frequent pair: (e, s t) (freq: 9)
     After merge: {'(l,o,w)': 5, '(l,o,w,e,r)': 2, '(w,i,d,e s t)': 3, '(n,e,w,e s t)': 6}
-    
+
     Merge 3:
     Pair frequencies: {'lo': 7, 'ow': 7, 'we': 2, 'er': 2, 'wi': 3, 'id': 3, 'de s t': 3, 'ne': 6, 'ew': 6, 'we s t': 6}
     Most frequent pair: (o, w) (freq: 7)
     After merge: {'(l,o w)': 5, '(l,o w,e,r)': 2, '(w,i,d,e s t)': 3, '(n,e,w,e s t)': 6}
-    
+
     Merge 4:
     Pair frequencies: {'lo w': 7, 'o we': 2, 'er': 2, 'wi': 3, 'id': 3, 'de s t': 3, 'ne': 6, 'ew': 6, 'we s t': 6}
     Most frequent pair: (l, o w) (freq: 7)
     After merge: {'(l o w)': 5, '(l o w,e,r)': 2, '(w,i,d,e s t)': 3, '(n,e,w,e s t)': 6}
-    
+
     Merge 5:
     Pair frequencies: {'l o we': 2, 'er': 2, 'wi': 3, 'id': 3, 'de s t': 3, 'ne': 6, 'ew': 6, 'we s t': 6}
     Most frequent pair: (w, e s t) (freq: 6)
     After merge: {'(l o w)': 5, '(l o w,e,r)': 2, '(w,i,d,e s t)': 3, '(n,e,w e s t)': 6}
-    
+
     Merge 6:
     Pair frequencies: {'l o we': 2, 'er': 2, 'wi': 3, 'id': 3, 'de s t': 3, 'ne': 6, 'ew e s t': 6}
     Most frequent pair: (n, e) (freq: 6)
     After merge: {'(l o w)': 5, '(l o w,e,r)': 2, '(w,i,d,e s t)': 3, '(n e,w e s t)': 6}
-    
+
     ==================================================
     Training Complete!
     Merges performed: ['s t', 'e s t', 'o w', 'l o w', 'w e s t', 'n e']
-    
+
     ==================================================
     Tokenization Examples:
     'newest' -> ['n e', 'w e s t']
     'lower' -> ['l o w', 'e', 'r']
     'widest' -> ['w', 'i', 'd', 'e s t']
     'low' -> ['l o w']
-    
+
     ==================================================
     New Vocabulary (merged tokens only):
     Token ID 257: 's t'
@@ -474,4 +741,8 @@ When you run this code, you'll see output like:
     Token ID 262: 'n e'
 ```
 
+---
+
 This implementation demonstrates how BPE learns to represent text efficiently by identifying and merging frequently occurring character patterns, creating a vocabulary that balances between the simplicity of byte-level tokenization and the efficiency of word-level tokenization.
+
+这个实现演示了BPE如何通过识别和合并频繁出现的字符模式来高效地表示文本，创建一个在字节级分词的简单性和词级分词的效率之间取得平衡的词汇表。

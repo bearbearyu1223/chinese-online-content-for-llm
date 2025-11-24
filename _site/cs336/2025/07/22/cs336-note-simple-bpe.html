@@ -4,23 +4,23 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Study Notes: Stanford CS336 Language Modeling from Scratch [2] | 🍒 Han’s Generative AI Quest</title>
+<title>Study Notes: Stanford CS336 Language Modeling from Scratch [2] | 🍒 大模型我都爱</title>
 <meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="Study Notes: Stanford CS336 Language Modeling from Scratch [2]" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Byte Pair Encoding (BPE) Tokenizer in a Nutshell Key Terms" />
-<meta property="og:description" content="Byte Pair Encoding (BPE) Tokenizer in a Nutshell Key Terms" />
+<meta name="description" content="A curated collection of Chinese online content designed for Large Language Model training, evaluation, and research. Exploring high-quality Chinese language resources for multilingual AI development." />
+<meta property="og:description" content="A curated collection of Chinese online content designed for Large Language Model training, evaluation, and research. Exploring high-quality Chinese language resources for multilingual AI development." />
 <link rel="canonical" href="http://localhost:4000/cs336/2025/07/22/cs336-note-simple-bpe.html" />
 <meta property="og:url" content="http://localhost:4000/cs336/2025/07/22/cs336-note-simple-bpe.html" />
-<meta property="og:site_name" content="🍒 Han’s Generative AI Quest" />
+<meta property="og:site_name" content="🍒 大模型我都爱" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2025-07-22T00:00:00-07:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Study Notes: Stanford CS336 Language Modeling from Scratch [2]" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-07-22T00:00:00-07:00","datePublished":"2025-07-22T00:00:00-07:00","description":"Byte Pair Encoding (BPE) Tokenizer in a Nutshell Key Terms","headline":"Study Notes: Stanford CS336 Language Modeling from Scratch [2]","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/cs336/2025/07/22/cs336-note-simple-bpe.html"},"url":"http://localhost:4000/cs336/2025/07/22/cs336-note-simple-bpe.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-07-22T00:00:00-07:00","datePublished":"2025-07-22T00:00:00-07:00","description":"A curated collection of Chinese online content designed for Large Language Model training, evaluation, and research. Exploring high-quality Chinese language resources for multilingual AI development.","headline":"Study Notes: Stanford CS336 Language Modeling from Scratch [2]","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/cs336/2025/07/22/cs336-note-simple-bpe.html"},"url":"http://localhost:4000/cs336/2025/07/22/cs336-note-simple-bpe.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="🍒 Han&apos;s Generative AI Quest" />
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="🍒 大模型我都爱" />
 
 <!-- MathJax Configuration -->
 <script>
@@ -43,18 +43,7 @@
 </head>
 <body><header class="site-header">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/">🍒 Han&#39;s Generative AI Quest</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-        <label for="nav-trigger">
-          <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
-            </svg>
-          </span>
-        </label>
-
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
-      </nav></div>
+  <div class="wrapper"><a class="site-title" rel="author" href="/">🍒 大模型我都爱</a></div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -66,12 +55,51 @@
         Jul 22, 2025
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="p-author h-card" itemprop="name">Han Yu</span></span></p>
+            <span class="p-author h-card" itemprop="name">大模型我都爱</span></span></p>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <h1 id="byte-pair-encoding-bpe-tokenizer-in-a-nutshell">Byte Pair Encoding (BPE) Tokenizer in a Nutshell</h1>
+    <style>
+  .xiaohongshu-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #ff2442; /* 小红书主色 */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .xiaohongshu-link:hover {
+    text-decoration: underline;
+  }
+  .xiaohongshu-logo {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+  }
+</style>
+
+<div style="padding:12px;border:1px solid #eee;border-radius:8px;display:inline-block;margin-bottom:20px;">
+  <strong>大模型我都爱</strong><br />
+  <p style="margin:4px 0;">
+    小红书号：
+    <a class="xiaohongshu-link" href="https://www.xiaohongshu.com/user/profile/5b2c5758e8ac2b08bf20e38d" target="_blank">
+      <img class="xiaohongshu-logo" src="https://static.cdnlogo.com/logos/r/77/rednote-xiaohongshu.svg" alt="小红书 logo" />
+      119826921
+    </a>
+  </p>
+  IP属地：美国
+</div>
+
+<h1 id="byte-pair-encoding-bpe-tokenizer-in-a-nutshell">Byte Pair Encoding (BPE) Tokenizer in a Nutshell</h1>
+
+<h1 id="字节对编码bpe分词器简述">字节对编码（BPE）分词器简述</h1>
+
+<hr />
+
 <h2 id="key-terms">Key Terms</h2>
+
+<h2 id="关键术语">关键术语</h2>
 
 <table>
   <thead>
@@ -100,9 +128,46 @@
   </tbody>
 </table>
 
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">概念</th>
+      <th style="text-align: left">描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Unicode</td>
+      <td style="text-align: left">为每个字符分配唯一代码点的系统（例如，’A’ → 65）</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">UTF-8</td>
+      <td style="text-align: left">将这些代码点编码为1-4字节的方法</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">字节</td>
+      <td style="text-align: left">8位；一个字节可以保存0到255的值</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">分词</td>
+      <td style="text-align: left">将文本语料库输入分解为模型可管理的片段（标记）</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
 <p>Let us take the following string as a simple example to illustrate the concept.</p>
 
+<p>让我们以下面的字符串作为一个简单的例子来说明这个概念。</p>
+
+<hr />
+
 <h2 id="example-encoding-a">Example: Encoding ‘A😊’</h2>
+
+<h2 id="示例编码a">示例：编码’A😊’</h2>
+
+<hr />
 
 <h3 id="step-1-get-the-unicode-codepoints">Step 1: Get the Unicode Codepoints</h3>
 
@@ -114,6 +179,19 @@
 <p>Output:</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[65, 128522]
 </code></pre></div></div>
+
+<h3 id="步骤1获取unicode代码">步骤1：获取Unicode代码</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">text</span> <span class="o">=</span> <span class="s">'A😊'</span>
+<span class="n">codepoints</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="s">'A'</span><span class="p">),</span> <span class="nb">ord</span><span class="p">(</span><span class="s">'😊'</span><span class="p">)]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">codepoints</span><span class="p">)</span>  <span class="c1"># [65, 128522]
+</span></code></pre></div></div>
+
+<p>输出：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[65, 128522]
+</code></pre></div></div>
+
+<hr />
 
 <h3 id="step-2-utf-8-encoding-turn-codepoints-into-bytes">Step 2: UTF-8 Encoding (Turn Codepoints into Bytes)</h3>
 
@@ -132,11 +210,38 @@
   <li>‘A😊’ is encoded as the sequence [65, 240, 159, 152, 138]</li>
 </ul>
 
+<h3 id="步骤2utf-8编码将代码转换为字节">步骤2：UTF-8编码（将代码转换为字节）</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">utf8_bytes</span> <span class="o">=</span> <span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">utf8_bytes</span><span class="p">))</span>  <span class="c1"># (65, 240, 159, 152, 138)
+</span></code></pre></div></div>
+
+<p>输出：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(65, 240, 159, 152, 138)
+</code></pre></div></div>
+
+<p>发生了什么：</p>
+<ul>
+  <li>‘A’ 使用一个字节编码：65</li>
+  <li>‘😊’ 使用四个字节编码：[240, 159, 152, 138]</li>
+  <li>‘A😊’ 被编码为序列 [65, 240, 159, 152, 138]</li>
+</ul>
+
+<hr />
+
 <h2 id="why-using-utf-8-for-encoding-is-helpful">Why Using UTF-8 for Encoding is Helpful</h2>
 
 <p>Instead of dealing with hundreds of thousands of possible codepoints (Unicode has more than 150,000 codepoints) or millions of words/subwords in vocabulary, we can model text using sequences of bytes. Each byte can be represented by an integer from 0 to 255, so we only need a vocabulary of size 256 to model input text. This approach is simple and complete—any character in any language can be represented as bytes, eliminating out-of-vocabulary token concerns.</p>
 
+<h2 id="为什么使用utf-8编码很有帮助">为什么使用UTF-8编码很有帮助</h2>
+
+<p>我们可以使用字节序列来建模文本，而不是处理数十万个可能的代码点（Unicode有超过150,000个代码点）或词汇表中的数百万个单词/子词。每个字节可以用0到255之间的整数表示，因此我们只需要大小为256的词汇表来建模输入文本。这种方法简单且完整——任何语言中的任何字符都可以表示为字节，消除了词汇表外标记的问题。</p>
+
+<hr />
+
 <h2 id="tokenization-spectrum">Tokenization Spectrum</h2>
+
+<h2 id="分词范围">分词范围</h2>
 
 <table>
   <thead>
@@ -169,6 +274,39 @@
   </tbody>
 </table>
 
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">分词级别</th>
+      <th style="text-align: left">示例标记</th>
+      <th style="text-align: left">优点</th>
+      <th style="text-align: left">缺点</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>词级</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">["unbelievable"]</code></td>
+      <td style="text-align: left">人类可读，高效</td>
+      <td style="text-align: left">OOV（词汇表外）问题</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>子词级</strong> (BPE)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">["un", "believ", "able"]</code></td>
+      <td style="text-align: left">处理罕见词，紧凑</td>
+      <td style="text-align: left">需要训练</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>字节级</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">[117, 110, 98, 101, ...]</code> (字节)</td>
+      <td style="text-align: left">无OOV，简单</td>
+      <td style="text-align: left">序列更长，语义意义较少</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
 <h2 id="why-subword-tokenization-is-the-middle-ground">Why Subword Tokenization is the Middle Ground</h2>
 
 <p><strong>Subword tokenization</strong> with <strong>Byte Pair Encoding (BPE)</strong> provides a balance between the other approaches:</p>
@@ -185,25 +323,68 @@
   </li>
 </ul>
 
+<h2 id="为什么子词分词是中间地带">为什么子词分词是中间地带</h2>
+
+<p>使用<strong>字节对编码（BPE）</strong>的<strong>子词分词</strong>在其他方法之间提供了平衡：</p>
+
+<ul>
+  <li><strong>词级分词</strong>在处理罕见或未见过的词时遇到困难（例如，即使”believe”是已知的，”unbelievable”可能是未知的）</li>
+  <li><strong>字节级分词</strong>避免了未知标记问题，但创建了冗长、低效的序列</li>
+  <li><strong>子词分词</strong>（BPE）：
+    <ol>
+      <li>将罕见词分解为熟悉的片段（子词）</li>
+      <li>保持常见词的紧凑性</li>
+      <li>可以从语料库统计中学习</li>
+    </ol>
+  </li>
+</ul>
+
+<hr />
+
 <h2 id="byte-pair-encoding-bpe-algorithm-overview">Byte Pair Encoding (BPE) Algorithm Overview</h2>
 
 <p>BPE starts from characters and iteratively <strong>merges the most frequent adjacent pairs</strong> into longer tokens.</p>
+
+<h2 id="字节对编码bpe算法概述">字节对编码（BPE）算法概述</h2>
+
+<p>BPE从字符开始，迭代地<strong>将最频繁的相邻对合并</strong>为更长的标记。</p>
+
+<hr />
 
 <h3 id="example-training-corpus">Example Training Corpus</h3>
 
 <p>Consider this toy training corpus:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"low"     (5 times)  
-"lowest"  (2 times)  
-"newest"  (6 times)  
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"low"     (5 times)
+"lowest"  (2 times)
+"newest"  (6 times)
 "wider"   (3 times)
 </code></pre></div></div>
 
 <p>We want to learn a compact subword vocabulary that reuses frequent patterns like “low” and “est”.</p>
 
+<h3 id="示例训练语料库">示例训练语料库</h3>
+
+<p>考虑这个玩具训练语料库：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"low"     (5次)
+"lowest"  (2次)
+"newest"  (6次)
+"wider"   (3次)
+</code></pre></div></div>
+
+<p>我们想要学习一个紧凑的子词词汇表，重用像”low”和”est”这样的频繁模式。</p>
+
+<hr />
+
 <h3 id="step-by-step-bpe-process">Step-by-Step BPE Process</h3>
 
+<h3 id="逐步bpe过程">逐步BPE过程</h3>
+
+<hr />
+
 <h4 id="step-0-preprocess-as-characters">Step 0: Preprocess as Characters</h4>
+
 <p>Each word is broken into characters with an end-of-word marker <code class="language-plaintext highlighter-rouge">&lt;/w&gt;</code>:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"l o w &lt;/w&gt;"        (5)
@@ -212,7 +393,20 @@
 "w i d e r &lt;/w&gt;"    (3)
 </code></pre></div></div>
 
+<h4 id="步骤0预处理为字符">步骤0：预处理为字符</h4>
+
+<p>每个单词被分解为字符，带有词尾标记<code class="language-plaintext highlighter-rouge">&lt;/w&gt;</code>：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"l o w &lt;/w&gt;"        (5)
+"l o w e s t &lt;/w&gt;"  (2)
+"n e w e s t &lt;/w&gt;"  (6)
+"w i d e r &lt;/w&gt;"    (3)
+</code></pre></div></div>
+
+<hr />
+
 <h4 id="step-1-count-adjacent-pairs">Step 1: Count Adjacent Pairs</h4>
+
 <p>Compute most frequent adjacent pairs across all words:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>('e', 's') appears 8 times
@@ -221,7 +415,20 @@
 ('o', 'w') appears 7 times
 </code></pre></div></div>
 
+<h4 id="步骤1计数相邻对">步骤1：计数相邻对</h4>
+
+<p>计算所有单词中最频繁的相邻对：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>('e', 's') 出现8次
+('s', 't') 出现8次
+('l', 'o') 出现7次
+('o', 'w') 出现7次
+</code></pre></div></div>
+
+<hr />
+
 <h4 id="step-2-merge-e--s--es">Step 2: Merge ‘e’ + ‘s’ → ‘es’</h4>
+
 <p>Update vocabulary:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"l o w &lt;/w&gt;"          (5)
@@ -229,6 +436,18 @@
 "n e w es t &lt;/w&gt;"     (6)
 "w i d e r &lt;/w&gt;"      (3)
 </code></pre></div></div>
+
+<h4 id="步骤2合并-e--s--es">步骤2：合并 ‘e’ + ‘s’ → ‘es’</h4>
+
+<p>更新词汇表：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"l o w &lt;/w&gt;"          (5)
+"l o w es t &lt;/w&gt;"     (2)
+"n e w es t &lt;/w&gt;"     (6)
+"w i d e r &lt;/w&gt;"      (3)
+</code></pre></div></div>
+
+<hr />
 
 <h4 id="step-3-merge-es--t--est">Step 3: Merge ‘es’ + ‘t’ → ‘est’</h4>
 
@@ -238,6 +457,16 @@
 "w i d e r &lt;/w&gt;"     (3)
 </code></pre></div></div>
 
+<h4 id="步骤3合并-es--t--est">步骤3：合并 ‘es’ + ‘t’ → ‘est’</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"l o w &lt;/w&gt;"         (5)
+"l o w est &lt;/w&gt;"     (2)
+"n e w est &lt;/w&gt;"     (6)
+"w i d e r &lt;/w&gt;"     (3)
+</code></pre></div></div>
+
+<hr />
+
 <h4 id="step-4-merge-l--o--lo-then-lo--w--low">Step 4: Merge ‘l’ + ‘o’ → ‘lo’, then ‘lo’ + ‘w’ → ‘low’</h4>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"low &lt;/w&gt;"          (5)
@@ -246,8 +475,25 @@
 "w i d e r &lt;/w&gt;"    (3)
 </code></pre></div></div>
 
+<h4 id="步骤4合并-l--o--lo然后-lo--w--low">步骤4：合并 ‘l’ + ‘o’ → ‘lo’，然后 ‘lo’ + ‘w’ → ‘low’</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"low &lt;/w&gt;"          (5)
+"low est &lt;/w&gt;"      (2)
+"n e w est &lt;/w&gt;"    (6)
+"w i d e r &lt;/w&gt;"    (3)
+</code></pre></div></div>
+
+<hr />
+
 <h4 id="continue-merging">Continue merging…</h4>
+
 <p>Eventually we learn useful building blocks like ‘low’, ‘est’, and ‘new’. After training, “newest” would tokenize to <code class="language-plaintext highlighter-rouge">['new', 'est', '&lt;/w&gt;']</code>.</p>
+
+<h4 id="继续合并">继续合并…</h4>
+
+<p>最终我们学习到有用的构建块，如’low’、’est’和’new’。训练后，”newest”将被分词为<code class="language-plaintext highlighter-rouge">['new', 'est', '&lt;/w&gt;']</code>。</p>
+
+<hr />
 
 <h2 id="bpe-implementation">BPE Implementation</h2>
 
@@ -255,6 +501,15 @@
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"low low low low low lower lower widest widest widest newest newest newest newest newest newest"
 </code></pre></div></div>
+
+<h2 id="bpe实现">BPE实现</h2>
+
+<p>下面是一个完整的实现，演示了在语料库上的BPE算法：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"low low low low low lower lower widest widest widest newest newest newest newest newest newest"
+</code></pre></div></div>
+
+<hr />
 
 <h3 id="key-components">Key Components</h3>
 
@@ -266,6 +521,18 @@
   <li><strong>Tokenization</strong>: Uses learned merges to tokenize new words</li>
 </ol>
 
+<h3 id="关键组件">关键组件</h3>
+
+<ol>
+  <li><strong>初始化</strong>：创建包含<code class="language-plaintext highlighter-rouge">&lt;|endoftext|&gt;</code>特殊标记和所有256个字节值的词汇表</li>
+  <li><strong>预分词</strong>：在空格处分割文本并将单词转换为字节元组</li>
+  <li><strong>对频率计数</strong>：计算语料库中所有相邻字节对</li>
+  <li><strong>合并</strong>：合并最频繁的对（在平局的情况下选择字典序最大的）</li>
+  <li><strong>分词</strong>：使用学习到的合并来分词新单词</li>
+</ol>
+
+<hr />
+
 <h3 id="how-it-works">How It Works</h3>
 
 <ol>
@@ -274,6 +541,17 @@
   <li><strong>Iterative Merging</strong>: Continues merging until desired number of merges is reached</li>
   <li><strong>Tokenization</strong>: Applies learned merges in order to tokenize new words</li>
 </ol>
+
+<h3 id="工作原理">工作原理</h3>
+
+<ol>
+  <li><strong>预分词</strong>：将<code class="language-plaintext highlighter-rouge">"low low low..."</code>转换为<code class="language-plaintext highlighter-rouge">{(l,o,w): 5, (l,o,w,e,r): 2, ...}</code></li>
+  <li><strong>合并选择</strong>：找到最频繁的对，如<code class="language-plaintext highlighter-rouge">('s','t')</code>和<code class="language-plaintext highlighter-rouge">('e','s')</code>，选择字典序较大的<code class="language-plaintext highlighter-rouge">('s','t')</code></li>
+  <li><strong>迭代合并</strong>：继续合并，直到达到所需的合并次数</li>
+  <li><strong>分词</strong>：按顺序应用学习到的合并来分词新单词</li>
+</ol>
+
+<hr />
 
 <h3 id="expected-output">Expected Output</h3>
 
@@ -284,7 +562,21 @@
   <li><strong>“newest” tokenizes as</strong>: <code class="language-plaintext highlighter-rouge">['ne', 'west']</code></li>
 </ul>
 
+<h3 id="预期输出">预期输出</h3>
+
+<p>通过6次合并，算法产生：</p>
+<ul>
+  <li><strong>合并</strong>：<code class="language-plaintext highlighter-rouge">['s t', 'e st', 'o w', 'l ow', 'w est', 'n e']</code></li>
+  <li><strong>最终词汇表</strong>：<code class="language-plaintext highlighter-rouge">&lt;|endoftext|&gt;</code>、256个字节字符、<code class="language-plaintext highlighter-rouge">st</code>、<code class="language-plaintext highlighter-rouge">est</code>、<code class="language-plaintext highlighter-rouge">ow</code>、<code class="language-plaintext highlighter-rouge">low</code>、<code class="language-plaintext highlighter-rouge">west</code>、<code class="language-plaintext highlighter-rouge">ne</code></li>
+  <li><strong>“newest”被分词为</strong>：<code class="language-plaintext highlighter-rouge">['ne', 'west']</code></li>
+</ul>
+
+<hr />
+
 <p>Below is one implementation for Algorithm 1 of <a href="https://arxiv.org/abs/1508.07909">Sennrich et al. [2016]</a>.</p>
+
+<p>下面是<a href="https://arxiv.org/abs/1508.07909">Sennrich等人[2016]</a>的算法1的一个实现。</p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span><span class="p">,</span> <span class="n">Counter</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">Union</span>
 
@@ -524,56 +816,62 @@
             <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Token ID </span><span class="si">{</span><span class="n">token_id</span><span class="si">}</span><span class="s">: '</span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="s">'"</span><span class="p">)</span>
 </code></pre></div></div>
 
+<hr />
+
 <h2 id="sample-output">Sample Output</h2>
 
 <p>When you run this code, you’ll see output like:</p>
+
+<h2 id="示例输出">示例输出</h2>
+
+<p>当你运行这段代码时，你会看到类似的输出：</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    BPE Training on Corpus:
     Corpus: low low low low low lower lower widest widest widest newest newest newest newest newest newest
     ==================================================
     Initial word frequencies: {'(l,o,w)': 5, '(l,o,w,e,r)': 2, '(w,i,d,e,s,t)': 3, '(n,e,w,e,s,t)': 6}
-    
+
     Merge 1:
     Pair frequencies: {'lo': 7, 'ow': 7, 'we': 8, 'er': 2, 'wi': 3, 'id': 3, 'de': 3, 'es': 9, 'st': 9, 'ne': 6, 'ew': 6}
     Most frequent pair: (s, t) (freq: 9)
     After merge: {'(l,o,w)': 5, '(l,o,w,e,r)': 2, '(w,i,d,e,s t)': 3, '(n,e,w,e,s t)': 6}
-    
+
     Merge 2:
     Pair frequencies: {'lo': 7, 'ow': 7, 'we': 8, 'er': 2, 'wi': 3, 'id': 3, 'de': 3, 'es t': 9, 'ne': 6, 'ew': 6}
     Most frequent pair: (e, s t) (freq: 9)
     After merge: {'(l,o,w)': 5, '(l,o,w,e,r)': 2, '(w,i,d,e s t)': 3, '(n,e,w,e s t)': 6}
-    
+
     Merge 3:
     Pair frequencies: {'lo': 7, 'ow': 7, 'we': 2, 'er': 2, 'wi': 3, 'id': 3, 'de s t': 3, 'ne': 6, 'ew': 6, 'we s t': 6}
     Most frequent pair: (o, w) (freq: 7)
     After merge: {'(l,o w)': 5, '(l,o w,e,r)': 2, '(w,i,d,e s t)': 3, '(n,e,w,e s t)': 6}
-    
+
     Merge 4:
     Pair frequencies: {'lo w': 7, 'o we': 2, 'er': 2, 'wi': 3, 'id': 3, 'de s t': 3, 'ne': 6, 'ew': 6, 'we s t': 6}
     Most frequent pair: (l, o w) (freq: 7)
     After merge: {'(l o w)': 5, '(l o w,e,r)': 2, '(w,i,d,e s t)': 3, '(n,e,w,e s t)': 6}
-    
+
     Merge 5:
     Pair frequencies: {'l o we': 2, 'er': 2, 'wi': 3, 'id': 3, 'de s t': 3, 'ne': 6, 'ew': 6, 'we s t': 6}
     Most frequent pair: (w, e s t) (freq: 6)
     After merge: {'(l o w)': 5, '(l o w,e,r)': 2, '(w,i,d,e s t)': 3, '(n,e,w e s t)': 6}
-    
+
     Merge 6:
     Pair frequencies: {'l o we': 2, 'er': 2, 'wi': 3, 'id': 3, 'de s t': 3, 'ne': 6, 'ew e s t': 6}
     Most frequent pair: (n, e) (freq: 6)
     After merge: {'(l o w)': 5, '(l o w,e,r)': 2, '(w,i,d,e s t)': 3, '(n e,w e s t)': 6}
-    
+
     ==================================================
     Training Complete!
     Merges performed: ['s t', 'e s t', 'o w', 'l o w', 'w e s t', 'n e']
-    
+
     ==================================================
     Tokenization Examples:
     'newest' -&gt; ['n e', 'w e s t']
     'lower' -&gt; ['l o w', 'e', 'r']
     'widest' -&gt; ['w', 'i', 'd', 'e s t']
     'low' -&gt; ['l o w']
-    
+
     ==================================================
     New Vocabulary (merged tokens only):
     Token ID 257: 's t'
@@ -584,7 +882,11 @@
     Token ID 262: 'n e'
 </code></pre></div></div>
 
+<hr />
+
 <p>This implementation demonstrates how BPE learns to represent text efficiently by identifying and merging frequently occurring character patterns, creating a vocabulary that balances between the simplicity of byte-level tokenization and the efficiency of word-level tokenization.</p>
+
+<p>这个实现演示了BPE如何通过识别和合并频繁出现的字符模式来高效地表示文本，创建一个在字节级分词的简单性和词级分词的效率之间取得平衡的词汇表。</p>
 
   </div><a class="u-url" href="/cs336/2025/07/22/cs336-note-simple-bpe.html" hidden></a>
 </article>
@@ -606,7 +908,7 @@
         </p>
       </div>
       <div class="footer-col">
-        <p>I chronicle my captivating journey through Generative AI, sharing insights,  breakthroughs, and learnings from my enthralling side projects in the field. 
+        <p>A curated collection of Chinese online content designed for Large Language Model training, evaluation, and research. Exploring high-quality Chinese language resources for multilingual AI development. 
 </p>
       </div>
     </div>

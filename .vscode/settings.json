@@ -1,0 +1,21 @@
+{
+  "markdown-pdf.convertOnSave": false,
+  "markdown-pdf.outputDirectory": "pdf-exports",
+  "markdown-pdf.outputDirectoryRelativePathFile": true,
+
+  // This tells the extension where to find images referenced with /assets
+  "markdown-pdf.styles": [],
+  "markdown-pdf.stylesRelativePathFile": false,
+
+  // Important: This maps /assets to the actual assets folder
+  "markdown-pdf.executablePath": "",
+
+  // Use this to inject custom base path for images
+  "markdown-pdf.includeDefaultStyles": true,
+
+  // Chrome path - adjust if needed
+  "markdown-pdf.chromiumArgs": [
+    "--no-sandbox",
+    "--disable-setuid-sandbox"
+  ]
+}

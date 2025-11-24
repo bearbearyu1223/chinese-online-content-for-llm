@@ -1,4 +1,4 @@
-title: 🇨🇳 Chinese Online Content for LLM
+title: 🍒 大模型我都爱
 # The `>` after `description:` means to ignore line-breaks until next key.
 # If you want to omit the line-break after the end of text, use `>-` instead.
 description: >
@@ -13,6 +13,15 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+
+# Exclude PDF export files and temporary files from processing
+exclude:
+  - pdf-exports/
+  - "*.pdf"
+  - "*_pdf.md"
+  - prepare-for-pdf.py
+  - pdf-no-breaks.css
+  - "*.DS_Store"
 
 # Theme-specific settings
 
