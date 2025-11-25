@@ -67,6 +67,7 @@ exclude:
   - "*.DS_Store"
   - PDF_QUICK_REFERENCE.md
   - POST_MANAGEMENT.md
+  - BILINGUAL_POST_GUIDE.md
   - "_posts/*.pdf"
   - "_posts/*.png"
   - "_posts/*.jpeg"
