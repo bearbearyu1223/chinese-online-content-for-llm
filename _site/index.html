@@ -271,6 +271,18 @@
   <data class="u-url" href="/chinese-online-content-for-llm/"></data>
 
   <div class="wrapper">
+    <!-- Support Section -->
+    <div class="footer-support-section">
+      <h3>☕ 支持我的创作 Support My Work</h3>
+      <p style="margin-bottom: 1em; opacity: 0.9;">如果这些内容对你有帮助，欢迎请我喝杯咖啡！<br>If you find my content helpful, consider buying me a coffee!</p>
+      <div class="support-options">
+        <a href="https://ko-fi.com/bearbearyu1223_go_irish" target="_blank" rel="noopener" class="support-btn buymeacoffee-btn">
+          <span class="btn-icon">☕</span>
+          <span class="btn-text">Buy Me a Coffee</span>
+        </a>
+      </div>
+    </div>
+
     <div class="footer-col-wrapper">
       <div class="footer-col">
         <p class="feed-subscribe">
@@ -290,6 +302,309 @@
   <!-- Theme toggle button -->
   <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
 </footer>
+
+<style>
+.footer-support-section {
+  text-align: center;
+  padding: 2em 0;
+  margin-bottom: 2em;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.footer-support-section h3 {
+  margin: 0 0 0.5em 0;
+  color: var(--text-color);
+}
+
+.support-options {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.support-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.75em 1.5em;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.support-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.buymeacoffee-btn {
+  background: #FFDD00;
+  color: #000;
+}
+
+.buymeacoffee-btn:hover {
+  background: #FFE633;
+}
+
+.btn-icon {
+  font-size: 1.2em;
+}
+
+[data-theme="dark"] .footer-support-section {
+  border-bottom-color: #444;
+}
+
+[data-theme="dark"] .support-btn {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .support-btn:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+</style>
+<!-- Floating Support Button -->
+<a href="https://ko-fi.com/bearbearyu1223_go_irish" target="_blank" rel="noopener" id="floating-support-btn" class="floating-support-btn" aria-label="Support this site">
+  <span class="support-heart">❤️</span>
+  <span class="support-text">Support</span>
+</a>
+
+<!-- Support Modal -->
+<div id="support-modal" class="support-modal" onclick="if(event.target === this) this.style.display='none'">
+  <div class="support-modal-content">
+    <button class="modal-close" onclick="document.getElementById('support-modal').style.display='none'" aria-label="Close modal">&times;</button>
+
+    <h2 style="text-align: center; margin-top: 0;">☕ 支持我的创作</h2>
+    <p style="text-align: center; color: #666; margin-bottom: 2em;">
+      如果这些内容对你有帮助，欢迎支持我继续创作！<br>
+      <small>If you find my content helpful, please consider supporting my work!</small>
+    </p>
+
+    <div class="support-methods">
+      <!-- Buy Me a Coffee -->
+      <div class="support-method">
+        <div class="method-icon" style="background: #FFDD00;">☕</div>
+        <h3>Buy Me a Coffee</h3>
+        <p>One-time support with PayPal, Card, etc.</p>
+        <a href="https://buymeacoffee.com/YOUR_USERNAME" target="_blank" rel="noopener" class="method-btn" style="background: #FFDD00; color: #000;">
+          Support on Buy Me a Coffee
+        </a>
+      </div>
+
+      <!-- Ko-fi -->
+      <div class="support-method">
+        <div class="method-icon" style="background: #13C3FF; color: white;">💙</div>
+        <h3>Ko-fi</h3>
+        <p>Zero fees! Support with PayPal or Card</p>
+        <a href="https://ko-fi.com/bearbearyu1223_go_irish" target="_blank" rel="noopener" class="method-btn" style="background: #13C3FF; color: white;">
+          Support on Ko-fi
+        </a>
+      </div>
+
+      <!-- GitHub Sponsors (Optional) -->
+      <div class="support-method">
+        <div class="method-icon" style="background: #24292e; color: white;">⭐</div>
+        <h3>GitHub Sponsors</h3>
+        <p>Monthly sponsorship for tech creators</p>
+        <a href="https://github.com/sponsors/YOUR_USERNAME" target="_blank" rel="noopener" class="method-btn" style="background: #24292e; color: white;">
+          Sponsor on GitHub
+        </a>
+      </div>
+    </div>
+
+    <p style="text-align: center; margin-top: 2em; color: #888; font-size: 0.9em;">
+      感谢你的支持！你的每一份心意都是我持续创作的动力 ❤️<br>
+      <small>Thank you for your support! Every contribution motivates me to create more content.</small>
+    </p>
+  </div>
+</div>
+
+<style>
+/* Floating Support Button */
+.floating-support-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.floating-support-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.support-heart {
+  font-size: 1.2em;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.1); }
+  50% { transform: scale(1); }
+}
+
+/* Support Modal */
+.support-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.support-modal-content {
+  background: var(--bg-color);
+  border-radius: 16px;
+  padding: 2em;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2em;
+  color: var(--text-color);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.modal-close:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.support-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5em;
+  margin: 2em 0;
+}
+
+.support-method {
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5em;
+  text-align: center;
+  background: var(--bg-color);
+  transition: all 0.3s ease;
+}
+
+.support-method:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-color: #667eea;
+}
+
+.method-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  margin: 0 auto 1em auto;
+}
+
+.support-method h3 {
+  margin: 0.5em 0;
+  color: var(--text-color);
+}
+
+.support-method p {
+  color: #666;
+  font-size: 0.9em;
+  margin: 0.5em 0 1em 0;
+  min-height: 2.5em;
+}
+
+.method-btn {
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.method-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .support-method {
+  background: #1a1a1a;
+}
+
+[data-theme="dark"] .support-method p {
+  color: #a0aec0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .floating-support-btn {
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .support-modal-content {
+    padding: 1.5em;
+    margin: 10px;
+  }
+
+  .support-methods {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </body>
 
 </html>

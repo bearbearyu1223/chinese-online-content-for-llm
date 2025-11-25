@@ -2,6 +2,18 @@
   <data class="u-url" href="{{ "/" | relative_url }}"></data>
 
   <div class="wrapper">
+    <!-- Support Section -->
+    <div class="footer-support-section">
+      <h3>☕ 支持我的创作 Support My Work</h3>
+      <p style="margin-bottom: 1em; opacity: 0.9;">如果这些内容对你有帮助，欢迎请我喝杯咖啡！<br>If you find my content helpful, consider buying me a coffee!</p>
+      <div class="support-options">
+        <a href="https://ko-fi.com/bearbearyu1223_go_irish" target="_blank" rel="noopener" class="support-btn buymeacoffee-btn">
+          <span class="btn-icon">☕</span>
+          <span class="btn-text">Buy Me a Coffee</span>
+        </a>
+      </div>
+    </div>
+
     <div class="footer-col-wrapper">
       <div class="footer-col">
         <p class="feed-subscribe">
@@ -20,3 +32,69 @@
   <!-- Theme toggle button -->
   <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
 </footer>
+
+<style>
+.footer-support-section {
+  text-align: center;
+  padding: 2em 0;
+  margin-bottom: 2em;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.footer-support-section h3 {
+  margin: 0 0 0.5em 0;
+  color: var(--text-color);
+}
+
+.support-options {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.support-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.75em 1.5em;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.support-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.buymeacoffee-btn {
+  background: #FFDD00;
+  color: #000;
+}
+
+.buymeacoffee-btn:hover {
+  background: #FFE633;
+}
+
+.btn-icon {
+  font-size: 1.2em;
+}
+
+[data-theme="dark"] .footer-support-section {
+  border-bottom-color: #444;
+}
+
+[data-theme="dark"] .support-btn {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .support-btn:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+</style>
