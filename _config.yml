@@ -58,9 +58,6 @@ defaults:
 exclude:
   - pdf-exports/
   - "*.pdf"
-  - "*.png"
-  - "*.jpeg"
-  - "*.jpg"
   - "*_pdf.md"
   - prepare-for-pdf.py
   - pdf-no-breaks.css
