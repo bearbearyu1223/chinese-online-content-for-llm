@@ -27,8 +27,16 @@ permalink: /about/
 
 欢迎通过以下方式与我交流：
 
-- <img src="{{ '/assets/picture/linkedin-logo.png' | relative_url }}" alt="LinkedIn" width="20" height="20" style="vertical-align: middle;"> **LinkedIn:** [han-yu-goirish](https://www.linkedin.com/in/han-yu-goirish/)
-- <img src="{{ '/assets/picture/xiaohongshu-logo.svg' | relative_url }}" alt="小红书" width="20" height="20" style="vertical-align: middle;"> **小红书：** [美女我都爱](https://www.xiaohongshu.com/user/profile/5b2c5758e8ac2b08bf20e38d)
+<ul>
+  <li>
+    <img src="{{ site.baseurl }}/assets/picture/linkedin-logo.png" alt="LinkedIn" width="20" height="20" style="vertical-align: middle;">
+    <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/han-yu-goirish/">han-yu-goirish</a>
+  </li>
+  <li>
+    <img src="{{ site.baseurl }}/assets/picture/xiaohongshu-logo.svg" alt="小红书" width="20" height="20" style="vertical-align: middle;">
+    <strong>小红书：</strong> <a href="https://www.xiaohongshu.com/user/profile/5b2c5758e8ac2b08bf20e38d">美女我都爱</a>
+  </li>
+</ul>
 
 期待与你的交流和分享！
 
