@@ -2331,8 +2331,8 @@ uv run train-transformer config_tinystories.json
 /* Floating Support Button */
 .floating-support-btn {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  top: 20px;
+  right: 90px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
@@ -2347,11 +2347,14 @@ uv run train-transformer config_tinystories.json
   align-items: center;
   gap: 8px;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .floating-support-btn:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+  color: white;
+  text-decoration: none;
 }
 
 .support-heart {
@@ -2492,8 +2495,8 @@ uv run train-transformer config_tinystories.json
 /* Responsive design */
 @media (max-width: 768px) {
   .floating-support-btn {
-    bottom: 20px;
-    right: 20px;
+    top: 15px;
+    right: 80px;
     padding: 10px 20px;
     font-size: 14px;
   }
@@ -2505,6 +2508,18 @@ uv run train-transformer config_tinystories.json
 
   .support-methods {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-support-btn {
+    right: 70px;
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .support-text {
+    display: none;
   }
 }
 </style>
