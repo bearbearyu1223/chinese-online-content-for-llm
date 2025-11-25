@@ -34,12 +34,19 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/chinese-online-content-for-llm/about/">关于本站</a></div>
+        <div class="trigger"><a class="page-link" href="/chinese-online-content-for-llm/cs336/">📚 Stanford CS336</a><a class="page-link" href="/chinese-online-content-for-llm/career/">🌱 Career &amp; Growth</a><a class="page-link" href="/chinese-online-content-for-llm/ai-insights/">🧬 AI Insights</a><a class="page-link" href="/chinese-online-content-for-llm/about/">关于本站</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home"><style>
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <style>
 .hero-banner {
   width: 100%;
   max-width: 100%;
@@ -73,6 +80,102 @@
   color: #34495e;
   line-height: 1.6;
 }
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2em;
+  margin: 3em 0;
+}
+
+.collection-card {
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2em;
+  text-align: center;
+  transition: all 0.3s ease;
+  background: var(--bg-color);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.collection-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px var(--shadow);
+  border-color: var(--link-color);
+}
+
+.collection-card .icon {
+  font-size: 4em;
+  margin-bottom: 0.3em;
+}
+
+.collection-card h3 {
+  margin: 0.5em 0;
+  font-size: 1.5em;
+}
+
+.collection-card p {
+  color: var(--text-color);
+  opacity: 0.8;
+  margin: 1em 0;
+}
+
+.collection-card .post-count {
+  font-size: 0.9em;
+  color: var(--link-color);
+  font-weight: bold;
+}
+
+.collection-card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.recent-posts {
+  margin-top: 4em;
+}
+
+.recent-posts h2 {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-list li {
+  margin-bottom: 1.5em;
+  padding: 1.5em;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-color);
+}
+
+.post-list .post-meta {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 0.5em;
+}
+
+.post-list .post-link {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+[data-theme="dark"] .welcome-section {
+  background: linear-gradient(135deg, #2d333b 0%, #1a1f26 100%);
+}
+
+[data-theme="dark"] .welcome-section h2,
+[data-theme="dark"] .welcome-section p {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .post-list .post-meta {
+  color: #a0aec0;
+}
 </style>
 
 <div class="hero-banner">
@@ -83,27 +186,85 @@
   <h2>欢迎来到 🍒 大模型我都爱！</h2>
   <p>
     这里是一个专注于分享中文优质内容的平台<br />
-    探索大语言模型的奥秘，分享 AI 技术学习笔记
+    探索大语言模型的奥秘，分享 AI 技术学习笔记与职场成长经验
   </p>
 </div>
 
+<h2 style="text-align: center; margin: 2em 0;">📚 内容专栏 Collections</h2>
 
-
-  <ul class="post-list"><li>
-        <span class="post-meta">Jul 22, 2025</span>
-        <h3>
-          <a class="post-link" href="/chinese-online-content-for-llm/cs336/2025/07/22/cs336-note-simple-bpe.html">
-            Study Notes: Stanford CS336 Language Modeling from Scratch [2]
-          </a>
-        </h3></li><li>
-        <span class="post-meta">Jul 20, 2025</span>
-        <h3>
-          <a class="post-link" href="/chinese-online-content-for-llm/cs336/2025/07/20/cs336-note-get-started.html">
-            Study Notes: Stanford CS336 Language Modeling from Scratch [1]
-          </a>
-        </h3></li></ul>
-
+<div class="collections-grid">
+  <a href="/chinese-online-content-for-llm/cs336/">
+    <div class="collection-card">
+      <div class="icon">📚</div>
+      <h3>Stanford CS336</h3>
+      <p>Language Modeling from Scratch<br />语言模型从零开始</p>
+      <span class="post-count">2 posts</span>
     </div>
+  </a>
+
+  <a href="/chinese-online-content-for-llm/career/">
+    <div class="collection-card">
+      <div class="icon">🌱</div>
+      <h3>Career &amp; Growth</h3>
+      <p>Professional Development<br />职场成长与自我反思</p>
+      <span class="post-count">0 posts</span>
+    </div>
+  </a>
+
+  <a href="/chinese-online-content-for-llm/ai-insights/">
+    <div class="collection-card">
+      <div class="icon">🧬</div>
+      <h3>AI Insights</h3>
+      <p>Latest AI Trends<br />人工智能趋势与洞察</p>
+      <span class="post-count">0 posts</span>
+    </div>
+  </a>
+</div>
+
+<div class="recent-posts">
+  <h2>📝 最近更新 Recent Posts</h2>
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  <ul class="post-list">
+    
+    
+      <li>
+        <div class="post-meta">
+          <span>2025-07-22</span>
+          <span> • Stanford CS336</span>
+        </div>
+        <h3>
+          <a class="post-link" href="/chinese-online-content-for-llm/cs336/cs336-note-simple-bpe/">Study Notes: Stanford CS336 Language Modeling from Scratch [2]</a>
+        </h3>
+      </li>
+    
+      <li>
+        <div class="post-meta">
+          <span>2025-07-20</span>
+          <span> • Stanford CS336</span>
+        </div>
+        <h3>
+          <a class="post-link" href="/chinese-online-content-for-llm/cs336/cs336-note-get-started/">Study Notes: Stanford CS336 Language Modeling from Scratch [1]</a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+  </div>
+
+</article>
 
       </div>
     </main><footer class="site-footer h-card">
