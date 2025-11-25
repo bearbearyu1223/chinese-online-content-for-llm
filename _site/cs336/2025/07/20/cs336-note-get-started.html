@@ -20,26 +20,8 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-07-20T00:00:00-07:00","datePublished":"2025-07-20T00:00:00-07:00","description":"A curated collection of Chinese online content designed for Large Language Model training, evaluation, and research. Exploring high-quality Chinese language resources for multilingual AI development.","headline":"Study Notes: Stanford CS336 Language Modeling from Scratch [1]","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/chinese-online-content-for-llm/cs336/2025/07/20/cs336-note-get-started.html"},"url":"http://localhost:4000/chinese-online-content-for-llm/cs336/2025/07/20/cs336-note-get-started.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/chinese-online-content-for-llm/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/chinese-online-content-for-llm/feed.xml" title="🍒 大模型我都爱" />
-
-<!-- MathJax Configuration -->
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-</script>
-
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
+<link rel="stylesheet" href="/chinese-online-content-for-llm/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/chinese-online-content-for-llm/feed.xml" title="🍒 大模型我都爱" /><link rel="stylesheet" href="/chinese-online-content-for-llm/assets/css/dark-mode.css">
+<script src="/chinese-online-content-for-llm/assets/js/theme-toggle.js"></script>
 </head>
 <body><header class="site-header">
 
@@ -245,7 +227,7 @@ npm <span class="nb">install
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:&lt;PORT&gt;?trace=var/traces/lecture_01.json
 </code></pre></div></div>
 
-<p>It should be something like <img src="/assets/picture/2025_07_20_cs336_note_get_started/cs336_lecture_view.png" alt="this" />.</p>
+<p>It should be something like <img src="/chinese-online-content-for-llm/assets/picture/2025_07_20_cs336_note_get_started/cs336_lecture_view.png" alt="this" />.</p>
 
 <h3 id="步骤5构建本地react-web应用以查看课程">步骤5：构建本地React Web应用以查看课程</h3>
 
@@ -266,7 +248,7 @@ npm <span class="nb">install
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:&lt;PORT&gt;?trace=var/traces/lecture_01.json
 </code></pre></div></div>
 
-<p>本地服务端应该看起来像<img src="/assets/picture/2025_07_20_cs336_note_get_started/cs336_lecture_view.png" alt="这样" />。</p>
+<p>本地服务端应该看起来像<img src="/chinese-online-content-for-llm/assets/picture/2025_07_20_cs336_note_get_started/cs336_lecture_view.png" alt="这样" />。</p>
 
 <hr />
 
@@ -282,28 +264,24 @@ npm <span class="nb">install
   <data class="u-url" href="/chinese-online-content-for-llm/"></data>
 
   <div class="wrapper">
-
     <div class="footer-col-wrapper">
       <div class="footer-col">
         <p class="feed-subscribe">
-          <a href="http://localhost:4000/chinese-online-content-for-llm/feed.xml">
-            <svg class="svg-icon orange">
-              <use xlink:href="/chinese-online-content-for-llm/assets/minima-social-icons.svg#rss"></use>
-            </svg><span>Subscribe</span>
+          <a href="/chinese-online-content-for-llm/feed.xml">
+            <svg class="svg-icon orange"><use xlink:href="/chinese-online-content-for-llm/assets/minima-social-icons.svg#rss"></use></svg><span>Subscribe</span>
           </a>
         </p>
-      </div>
-      <div class="footer-col">
         <p>A curated collection of Chinese online content designed for Large Language Model training, evaluation, and research. Exploring high-quality Chinese language resources for multilingual AI development.
 </p>
       </div>
+      <div class="footer-col">
+        <p>© 2025 🍒 大模型我都爱</p>
+      </div>
     </div>
-
-    <div class="social-links"><ul class="social-media-list"></ul>
-</div>
-
   </div>
 
+  <!-- Theme toggle button -->
+  <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
 </footer>
 </body>
 

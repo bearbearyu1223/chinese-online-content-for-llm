@@ -20,26 +20,8 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-08-14T00:00:00-07:00","datePublished":"2023-08-14T00:00:00-07:00","description":"TL;DR This post involves creating a Question and Answering system using the LLM model hosted on Apple M1 Pro. The key building blocks include the LLM model (llama-2-7b-chat.ggmlv3.q8_0.bin), an embedding model (sentence-transformers/all-MiniLM-L6-v2), and an on-device vector database (FAISS). The app is built using the “LangChain” framework. All components are open source, eliminating the need for OpenAI services. The system’s performance is similar to OpenAI but with 10x longer latency (around 60s/query vs 5s/query) due to on-device model inference.","headline":"Build On-Device QnA with LangChain and Llama2","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/chinese-online-content-for-llm/chatbot/2023/08/14/food-qna-on-device-llm.html"},"url":"http://localhost:4000/chinese-online-content-for-llm/chatbot/2023/08/14/food-qna-on-device-llm.html"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/chinese-online-content-for-llm/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/chinese-online-content-for-llm/feed.xml" title="🍒 大模型我都爱" />
-
-<!-- MathJax Configuration -->
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-</script>
-
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
+<link rel="stylesheet" href="/chinese-online-content-for-llm/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/chinese-online-content-for-llm/feed.xml" title="🍒 大模型我都爱" /><link rel="stylesheet" href="/chinese-online-content-for-llm/assets/css/dark-mode.css">
+<script src="/chinese-online-content-for-llm/assets/js/theme-toggle.js"></script>
 </head>
 <body><header class="site-header">
 
@@ -155,28 +137,24 @@ Retrieval Augmented Generation by running Llama2 model inference on local device
   <data class="u-url" href="/chinese-online-content-for-llm/"></data>
 
   <div class="wrapper">
-
     <div class="footer-col-wrapper">
       <div class="footer-col">
         <p class="feed-subscribe">
-          <a href="http://localhost:4000/chinese-online-content-for-llm/feed.xml">
-            <svg class="svg-icon orange">
-              <use xlink:href="/chinese-online-content-for-llm/assets/minima-social-icons.svg#rss"></use>
-            </svg><span>Subscribe</span>
+          <a href="/chinese-online-content-for-llm/feed.xml">
+            <svg class="svg-icon orange"><use xlink:href="/chinese-online-content-for-llm/assets/minima-social-icons.svg#rss"></use></svg><span>Subscribe</span>
           </a>
         </p>
-      </div>
-      <div class="footer-col">
         <p>A curated collection of Chinese online content designed for Large Language Model training, evaluation, and research. Exploring high-quality Chinese language resources for multilingual AI development.
 </p>
       </div>
+      <div class="footer-col">
+        <p>© 2025 🍒 大模型我都爱</p>
+      </div>
     </div>
-
-    <div class="social-links"><ul class="social-media-list"></ul>
-</div>
-
   </div>
 
+  <!-- Theme toggle button -->
+  <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
 </footer>
 </body>
 

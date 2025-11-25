@@ -199,7 +199,7 @@ Open the viewer in your browser:
 http://localhost:<PORT>?trace=var/traces/lecture_01.json
 ```
 
-It should be something like ![this](/assets/picture/2025_07_20_cs336_note_get_started/cs336_lecture_view.png).
+It should be something like ![this]({{ site.baseurl }}/assets/picture/2025_07_20_cs336_note_get_started/cs336_lecture_view.png).
 
 ### 步骤5：构建本地React Web应用以查看课程
 
@@ -223,7 +223,7 @@ npm run dev
 http://localhost:<PORT>?trace=var/traces/lecture_01.json
 ```
 
-本地服务端应该看起来像![这样](/assets/picture/2025_07_20_cs336_note_get_started/cs336_lecture_view.png)。
+本地服务端应该看起来像![这样]({{ site.baseurl }}/assets/picture/2025_07_20_cs336_note_get_started/cs336_lecture_view.png)。
 
 ---
 
