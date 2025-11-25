@@ -27,8 +27,8 @@ permalink: /about/
 
 欢迎通过以下方式与我交流：
 
-- <img src="/chinese-online-content-for-llm/assets/picture/linkedin-logo.png" alt="LinkedIn" width="20" height="20" style="vertical-align: middle;"> **LinkedIn:** [han-yu-goirish](https://www.linkedin.com/in/han-yu-goirish/)
-- <img src="/chinese-online-content-for-llm/assets/picture/xiaohongshu-logo.svg" alt="小红书" width="20" height="20" style="vertical-align: middle;"> **小红书：** [美女我都爱](https://www.xiaohongshu.com/user/profile/5b2c5758e8ac2b08bf20e38d)
+- <img src="{{ '/assets/picture/linkedin-logo.png' | relative_url }}" alt="LinkedIn" width="20" height="20" style="vertical-align: middle;"> **LinkedIn:** [han-yu-goirish](https://www.linkedin.com/in/han-yu-goirish/)
+- <img src="{{ '/assets/picture/xiaohongshu-logo.svg' | relative_url }}" alt="小红书" width="20" height="20" style="vertical-align: middle;"> **小红书：** [美女我都爱](https://www.xiaohongshu.com/user/profile/5b2c5758e8ac2b08bf20e38d)
 
 期待与你的交流和分享！
 
